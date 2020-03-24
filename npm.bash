@@ -53,3 +53,7 @@ elif type compctl &>/dev/null; then
   }
   compctl -K _npm_completion npm
 fi
+
+# Search for "linked" modules in a given dir
+alias list_linked_modules="find . -type l | grep -v .bin | sed 's/^\.\/node_modules\///'"
+alias unlink_all_modules="list_linked_modules | xargs yarn unlink && yarn install --check-files"
